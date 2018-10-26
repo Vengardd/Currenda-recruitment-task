@@ -2,22 +2,22 @@ package com.vengard.recrutation.model;
 
 public class Output {
 
-    private float averageBuyingRate;
-    private float standardDeviationSellingRate;
+    private double averageBuyingRate;
+    private double standardDeviationSellingRate;
 
     public Output() {
     }
 
-    public Output(float averageBuyingRate, float standardDeviationSellingRate) {
+    public Output(double averageBuyingRate, double standardDeviationSellingRate) {
         this.averageBuyingRate = averageBuyingRate;
         this.standardDeviationSellingRate = standardDeviationSellingRate;
     }
 
-    public float getAverageBuyingRate() {
+    public double getAverageBuyingRate() {
         return averageBuyingRate;
     }
 
-    public float getStandardDeviationSellingRate() {
+    public double getStandardDeviationSellingRate() {
         return standardDeviationSellingRate;
     }
 }
