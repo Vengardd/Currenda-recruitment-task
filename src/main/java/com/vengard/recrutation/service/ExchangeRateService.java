@@ -1,5 +1,6 @@
 package com.vengard.recrutation.service;
 
+import com.vengard.recrutation.exception.BadDataInputException;
 import com.vengard.recrutation.model.Currency;
 import com.vengard.recrutation.model.Input;
 import com.vengard.recrutation.model.Output;
@@ -15,7 +16,8 @@ public class ExchangeRateService {
     public Output getAverageExchangeRate(Input input) {
         Currency currency = currencyService.findCurrencyByCode(input.getCurrency().getCode());
         //ToDo validate dates
-
+        if(input.getStartDate().isBefore(input.getEndDate()))
+            throw new BadDataInputException();
         return new Output();
     }
 }
