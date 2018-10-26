@@ -14,6 +14,8 @@ public class ExchangeRateService {
 
     public Output getAverageExchangeRate(Input input) {
         Currency currency = currencyService.findCurrencyByCode(input.getCurrency().getCode());
+        //ToDo validate dates
+
         return new Output();
     }
 }
