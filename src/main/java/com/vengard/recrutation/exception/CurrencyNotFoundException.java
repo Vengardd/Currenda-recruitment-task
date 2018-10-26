@@ -1,4 +1,4 @@
 package com.vengard.recrutation.exception;
 
-public class CurrencyNotFoundException {
+public class CurrencyNotFoundException extends RuntimeException {
 }

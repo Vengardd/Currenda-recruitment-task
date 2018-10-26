@@ -25,4 +25,16 @@ public class Currency {
         this.currency = currency;
         this.code = code;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public String getCode() {
+        return code;
+    }
 }
