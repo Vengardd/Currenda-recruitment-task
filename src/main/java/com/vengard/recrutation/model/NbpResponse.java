@@ -1,5 +1,6 @@
 package com.vengard.recrutation.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NbpResponse {
@@ -7,7 +8,7 @@ public class NbpResponse {
     private String table;
     private String currency;
     private String code;
-    private List<Rate> rates;
+    private List<Rate> rates = new ArrayList<>();
 
     public NbpResponse() {
     }

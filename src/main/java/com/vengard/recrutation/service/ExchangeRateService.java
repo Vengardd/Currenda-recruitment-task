@@ -11,13 +11,18 @@ import org.springframework.stereotype.Service;
 public class ExchangeRateService {
 
     @Autowired
-    CurrencyService currencyService;
+    private CurrencyService currencyService;
+
+    @Autowired
+    private NbpResponseService nbpResponseService;
 
     public Output getAverageExchangeRate(Input input) {
         Currency currency = currencyService.findCurrencyByCode(input.getCurrency().getCode());
-        //ToDo validate dates
         if(input.getStartDate().isBefore(input.getEndDate()))
             throw new BadDataInputException();
+
         return new Output();
     }
+
+
 }
