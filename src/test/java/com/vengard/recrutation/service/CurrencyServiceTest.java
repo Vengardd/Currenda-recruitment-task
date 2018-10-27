@@ -1,6 +1,5 @@
 package com.vengard.recrutation.service;
 
-
 import com.vengard.recrutation.exception.CurrencyNotFoundException;
 import com.vengard.recrutation.model.Currency;
 import com.vengard.recrutation.repository.CurrencyRepository;

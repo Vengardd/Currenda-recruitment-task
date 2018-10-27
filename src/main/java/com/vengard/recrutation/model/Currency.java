@@ -13,7 +13,7 @@ public class Currency {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String currency;
+    private String name;
 
     @Size(min = 3, max = 3)
     private String code;
@@ -21,8 +21,8 @@ public class Currency {
     public Currency() {
     }
 
-    public Currency(String currency, @Size(min = 3, max = 3) String code) {
-        this.currency = currency;
+    public Currency(String name, @Size(min = 3, max = 3) String code) {
+        this.name = name;
         this.code = code;
     }
 
@@ -30,11 +30,46 @@ public class Currency {
         return id;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getName() {
+        return name;
     }
 
     public String getCode() {
         return code;
+    }
+
+
+    public static final class CurrencyBuilder {
+        private Long id;
+        private String name;
+        private String code;
+
+        private CurrencyBuilder() {
+        }
+
+        public static CurrencyBuilder aCurrency() {
+            return new CurrencyBuilder();
+        }
+
+        public CurrencyBuilder withId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public CurrencyBuilder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public CurrencyBuilder withCode(String code) {
+            this.code = code;
+            return this;
+        }
+
+        public Currency build() {
+            Currency currency = new Currency(name, code);
+            currency.id = this.id;
+            return currency;
+        }
     }
 }

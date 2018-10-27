@@ -1,6 +1,5 @@
 package com.vengard.recrutation.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
@@ -9,7 +8,6 @@ public class Rate {
 
     private String no;
 
-    @JsonFormat(pattern = "yyyy-mm-dd", shape = JsonFormat.Shape.STRING)
     private LocalDate effectiveDate;
 
     @JsonProperty("bid")
