@@ -1,5 +1,6 @@
 package com.vengard.recrutation.service;
 
+import com.vengard.recrutation.exception.NoDataException;
 import com.vengard.recrutation.model.Input;
 import com.vengard.recrutation.model.NbpResponse;
 import com.vengard.recrutation.model.Rate;
@@ -15,12 +16,14 @@ public class NbpResponseService {
 
     public List<Rate> getRateListFromNbpResponse(Input input) {
         NbpResponse nbpResponse = restTemplate.getForObject(createURL(input), NbpResponse.class);
+        if(nbpResponse == null)
+            throw new NoDataException();
         return nbpResponse.getRates();
     }
 
     private String createURL(Input input) {
         return "http://api.nbp.pl/api/exchangerates/rates/c/" +
-                input.getCurrency().getCode() + "/" +
+                input.getCurrency() + "/" +
                 input.getStartDate() + "/" +
                 input.getEndDate() + "/";
     }

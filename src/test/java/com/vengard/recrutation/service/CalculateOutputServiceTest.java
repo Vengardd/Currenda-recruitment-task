@@ -1,6 +1,5 @@
 package com.vengard.recrutation.service;
 
-import com.vengard.recrutation.model.Currency;
 import com.vengard.recrutation.model.Input;
 import com.vengard.recrutation.model.Rate;
 import org.joda.time.LocalDate;
@@ -18,8 +17,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class CalculateOutputServiceTest {
 
-    @Mock
-    private CalculateOutputService calculateOutputService;
+    private CalculateOutputService calculateOutputService = new CalculateOutputService();
 
     @InjectMocks
     private NbpResponseService nbpResponseService;
@@ -28,12 +26,9 @@ public class CalculateOutputServiceTest {
 
     @Before
     public void init() {
-        Currency currency = Currency.CurrencyBuilder.aCurrency()
-                .withCode("EUR")
-                .build();
         LocalDate startDate = new LocalDate(2017, 11, 20);
         LocalDate endDate = new LocalDate(2017, 11, 24);
-        Input input = new Input(currency, startDate, endDate);
+        Input input = new Input("EUR", startDate, endDate);
 
         list = nbpResponseService.getRateListFromNbpResponse(input);
     }

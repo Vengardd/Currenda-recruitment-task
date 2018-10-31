@@ -1,6 +1,5 @@
 package com.vengard.recrutation.service;
 
-import com.vengard.recrutation.model.Currency;
 import com.vengard.recrutation.model.Input;
 import com.vengard.recrutation.model.Rate;
 import org.joda.time.LocalDate;
@@ -21,13 +20,10 @@ public class NbpResponseServiceTest {
     private NbpResponseService nbpResponseService;
 
     @Test
-    public void getNbpReponseWithCorrectInput() {
-        Currency currency = Currency.CurrencyBuilder.aCurrency()
-                .withCode("EUR")
-                .build();
+    public void getNbpResponseWithCorrectInput() {
         LocalDate startDate = new LocalDate(2012, 1, 1);
         LocalDate endDate = new LocalDate(2012, 1, 31);
-        Input input = new Input(currency, startDate, endDate);
+        Input input = new Input("EUR", startDate, endDate);
 
         List<Rate> list = nbpResponseService.getRateListFromNbpResponse(input);
 

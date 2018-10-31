@@ -6,7 +6,7 @@ import javax.validation.constraints.PastOrPresent;
 
 public class Input {
 
-    private Currency currency;
+    private String currency;
 
     @PastOrPresent
     private LocalDate startDate;
@@ -16,13 +16,13 @@ public class Input {
     public Input() {
     }
 
-    public Input(Currency currency, @PastOrPresent LocalDate startDate, @PastOrPresent LocalDate endDate) {
+    public Input(String currency, @PastOrPresent LocalDate startDate, @PastOrPresent LocalDate endDate) {
         this.currency = currency;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public Currency getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 

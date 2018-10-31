@@ -3,23 +3,27 @@ package com.vengard.recrutation.service;
 import com.vengard.recrutation.model.Rate;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Service
 public class CalculateOutputService {
 
+    private static String numberFormat = "##.####";
+
     public double calculateAverageBuyingRate(List<Rate> rates) {
         //ToDo refactor
-        return rates.stream()
+        return Double.parseDouble(new DecimalFormat(numberFormat).format(
+                rates.stream()
                 .mapToDouble(Rate::getBuyRate)
                 .average()
-                .orElse(Double.NaN);
+                .orElse(Double.NaN)));
     }
 
     public double calculateDevatationSellingRate(List<Rate> rates) {
         double average = getAverageSellRate(rates);
         double powdedSum = getPowdedSum(rates, average);
-        return Math.sqrt(powdedSum / rates.size());
+        return Double.parseDouble(new DecimalFormat(numberFormat).format(Math.sqrt(powdedSum / rates.size())));
     }
 
     private double getPowdedSum(List<Rate> rates, double average) {

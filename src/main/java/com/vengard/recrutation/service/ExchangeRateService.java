@@ -23,13 +23,11 @@ public class ExchangeRateService {
     private CalculateOutputService calculateOutputService;
 
     public Output getAverageExchangeRate(Input input) {
-        Currency currency = currencyService.findCurrencyByCode(input.getCurrency().getCode());
+        Currency currency = currencyService.findCurrencyByCode(input.getCurrency());
         if (input.getStartDate().isBefore(input.getEndDate()))
             throw new BadDataInputException();
         List<Rate> list = nbpResponseService.getRateListFromNbpResponse(input);
         return new Output(calculateOutputService.calculateAverageBuyingRate(list),
                 calculateOutputService.calculateDevatationSellingRate(list));
     }
-
-
 }
