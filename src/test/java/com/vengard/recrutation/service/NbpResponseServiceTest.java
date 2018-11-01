@@ -2,12 +2,12 @@ package com.vengard.recrutation.service;
 
 import com.vengard.recrutation.model.Input;
 import com.vengard.recrutation.model.Rate;
-import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
@@ -21,8 +21,8 @@ public class NbpResponseServiceTest {
 
     @Test
     public void getNbpResponseWithCorrectInput() {
-        LocalDate startDate = new LocalDate(2012, 1, 1);
-        LocalDate endDate = new LocalDate(2012, 1, 31);
+        LocalDate startDate = LocalDate.parse("2012-01-01");
+        LocalDate endDate = LocalDate.parse("2012-01-31");
         Input input = new Input("EUR", startDate, endDate);
 
         List<Rate> list = nbpResponseService.getRateListFromNbpResponse(input);

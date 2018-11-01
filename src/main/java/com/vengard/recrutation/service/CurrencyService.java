@@ -15,5 +15,4 @@ public class CurrencyService {
     public Currency findCurrencyByCode(String code) {
         return currencyRepository.findByCode(code).orElseThrow(CurrencyNotFoundException::new);
     }
-
 }

@@ -6,7 +6,8 @@ import java.time.LocalDate;
 
 public class Rate {
 
-    private String no;
+    @JsonProperty("no")
+    private String numberOf;
 
     private LocalDate effectiveDate;
 
@@ -19,15 +20,15 @@ public class Rate {
     public Rate() {
     }
 
-    public Rate(String no, LocalDate effectiveDate, float buyRate, float sellRate) {
-        this.no = no;
+    public Rate(String numberOf, LocalDate effectiveDate, float buyRate, float sellRate) {
+        this.numberOf = numberOf;
         this.effectiveDate = effectiveDate;
         this.buyRate = buyRate;
         this.sellRate = sellRate;
     }
 
-    public String getNo() {
-        return no;
+    public String getNumberOf() {
+        return numberOf;
     }
 
     public LocalDate getEffectiveDate() {

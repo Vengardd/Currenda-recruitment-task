@@ -2,14 +2,13 @@ package com.vengard.recrutation.service;
 
 import com.vengard.recrutation.model.Input;
 import com.vengard.recrutation.model.Rate;
-import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -26,8 +25,8 @@ public class CalculateOutputServiceTest {
 
     @Before
     public void init() {
-        LocalDate startDate = new LocalDate(2017, 11, 20);
-        LocalDate endDate = new LocalDate(2017, 11, 24);
+        LocalDate startDate = LocalDate.parse("2017-01-01");
+        LocalDate endDate = LocalDate.parse("2017-01-31");
         Input input = new Input("EUR", startDate, endDate);
 
         list = nbpResponseService.getRateListFromNbpResponse(input);
@@ -41,7 +40,7 @@ public class CalculateOutputServiceTest {
 
     @Test
     public void calculateDevatationSellingRate() {
-        double result = calculateOutputService.calculateDevatationSellingRate(list);
+        double result = calculateOutputService.calculateDeviationSellingRate(list);
         assertEquals(result, 0.0101, 0);
     }
 
